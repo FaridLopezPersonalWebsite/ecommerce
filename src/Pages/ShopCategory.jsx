@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { getAllProducts } from "../../src/Components/API"; 
+import React, { useEffect, useState, useContext } from "react";
+import { getAllProducts } from "../../src/Components/API";
+import { ShopContext } from '../Context/ShopContext';
 
 const ProductDisplay = () => {
+  const { addToCart } = useContext(ShopContext);
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
 
@@ -45,6 +47,7 @@ const ProductDisplay = () => {
           <p>ID: {product.id}</p>
           <p>Price: ${product.price}</p>
           <p>Category: {product.category}</p>
+          <button onClick={() => addToCart(product.id)}>Add to Cart</button>
         </div>
       ))}
     </div>
@@ -52,3 +55,4 @@ const ProductDisplay = () => {
 };
 
 export default ProductDisplay;
+

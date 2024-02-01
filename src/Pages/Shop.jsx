@@ -1,14 +1,25 @@
-import React from 'react'
-import Hero from '../Components/Hero/Hero'
+// Shop.js or ShopCategory.js
+
+import React, { useContext } from 'react';
+import { ShopContext } from '../Context/ShopContext';
+import Product from '../Pages/Product';  // Adjust the import path
 
 
-const Shop = () => {
+const Shop = ({ banner, category }) => {
+  const { all_product } = useContext(ShopContext);
+
   return (
     <div>
-      <Hero/>
-      
-    </div>
-  )
-}
+      <h2>{category}</h2>
+      <img src={banner} alt={`${category} banner`} />
 
-export default Shop
+      <div className="product-list">
+        {all_product.map(product => (
+          <Product key={product.id} product={product} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Shop;
