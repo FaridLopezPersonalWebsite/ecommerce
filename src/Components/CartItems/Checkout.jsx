@@ -1,4 +1,4 @@
-// Checkout.jsx
+
 import React, { useContext, useState } from 'react';
 import { ShopContext } from '../../Context/ShopContext';
 
@@ -17,9 +17,9 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Additional logic for handling form submission, e.g., making a purchase
+    
     alert('Thank you for shopping with us today!');
-    // Clear the form data after submission
+    
     setFormData({
       cardNumber: '',
       shippingAddress: '',

@@ -1,4 +1,4 @@
-// Navbar.jsx
+
 import React, { useContext, useRef, useState } from 'react';
 import './Navbar.css';
 import cart_icon from '../Assets/cart_icon.png';
@@ -35,7 +35,7 @@ const Navbar = () => {
       </ul>
       <div className="nav-login-cart">
         {loggedIn ? (
-          // If user is logged in, show logout button
+         
           <>
             <button onClick={logout}>Logout</button>
             <div className="nav-cart-count">{getTotalCartItems()}</div>
@@ -44,7 +44,7 @@ const Navbar = () => {
             </Link>
           </>
         ) : (
-          // If user is not logged in, show login button
+       
           <>
             <Link to='/login'>
               <button>Login</button>

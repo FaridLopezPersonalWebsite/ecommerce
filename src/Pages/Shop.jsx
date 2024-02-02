@@ -1,8 +1,8 @@
-// Shop.js or ShopCategory.js
+
 
 import React, { useContext } from 'react';
 import { ShopContext } from '../Context/ShopContext';
-import Product from '../Pages/Product';  // Adjust the import path
+import Product from '../Pages/Product';  
 
 
 const Shop = ({ banner, category }) => {

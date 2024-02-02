@@ -78,10 +78,10 @@ const ShopContextProvider = (props) => {
     removeFromCart,
     login,
     logout,
-    loggedIn, // Added the loggedIn state
+    loggedIn, 
   };
 
-  // Provide the context value to the component tree
+  
   return (
     <ShopContext.Provider value={contextValue}>
       {props.children}

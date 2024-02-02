@@ -1,4 +1,4 @@
-// API.js
+
 import React from "react";
 
 async function getAllProducts() {
@@ -27,11 +27,11 @@ async function getProductById(id) {
   }
 }
 
-// Replace "https://your-api-url/register" with your actual API endpoint for user registration
+
 async function createAccount(accountData) {
   try {
     const res = await fetch(
-      "https://fakestoreapi.com/users", // Updated to fetch user creation
+      "https://fakestoreapi.com/users", 
       {
         method: "POST",
         headers: {
@@ -67,7 +67,7 @@ async function getUser() {
   }
 }
 
-// Updated to use the correct login endpoint
+
 async function userLogin(userObj) {
   try {
     const res = await fetch(

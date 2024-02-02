@@ -1,4 +1,4 @@
-// Login.jsx
+
 import React, { useContext, useState } from 'react';
 import './CSS/LoginSignup.css';
 import { Link, Navigate } from 'react-router-dom';
@@ -16,7 +16,7 @@ const Login = () => {
     const password = event.target.elements.password.value;
 
     try {
-      // Call your API endpoint for user login
+      
       const loginResponse = await fetch('https://fakestoreapi.com/auth/login', {
         method: 'POST',
         headers: {
@@ -28,19 +28,13 @@ const Login = () => {
       const loginData = await loginResponse.json();
 
       if (loginData.token) {
-        // Call the login function from the context to update the user state
+        
         login({ username });
-        // Set token if setToken function is available
+      
         setToken && setToken(loginData.token);
-        // Set the user as authenticated
+        
         setIsAuthenticated(true);
-        // Optional: Add logic to fetch and update user data, cart, etc.
-        // For example, fetch user's cart data and update the context
-        // const userCartData = await fetchUserCartData(username);
-        // updateCart(userCartData);
-        // Redirect the user to the desired page (e.g., home)
-        // You can use the Navigate component from React Router for this
-        // Example: <Navigate to='/home' replace />
+        
       } else {
         setError('Invalid username or password. Please try again.');
       }
@@ -50,7 +44,7 @@ const Login = () => {
     }
   };
 
-  // If the user is already authenticated, redirect them to the home page or any other desired page
+  
   if (isAuthenticated) {
     return <Navigate to='/home' replace />;
   }

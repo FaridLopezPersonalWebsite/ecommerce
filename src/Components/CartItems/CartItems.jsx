@@ -1,9 +1,9 @@
-// CartItems.jsx
+
 import React, { useContext } from 'react';
 import './CartItems.css';
 import remove_icon from '../Assets/cart_cross_icon.png';
 import { ShopContext } from '../../Context/ShopContext';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom'; 
 
 const CartItems = () => {
   const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext);
@@ -56,7 +56,7 @@ const CartItems = () => {
               <h3>${getTotalCartAmount()}</h3>
             </div>
           </div>
-          <Link to='/checkout'> {/* Use Link to navigate to the checkout page */}
+          <Link to='/checkout'> 
             <button>PROCEED TO CHECKOUT</button>
           </Link>
         </div>

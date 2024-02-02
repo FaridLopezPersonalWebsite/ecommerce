@@ -1,4 +1,4 @@
-// Signup.jsx
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createAccount } from '../Components/API';
@@ -24,10 +24,10 @@ const Signup = () => {
     event.preventDefault();
 
     try {
-      // Replace this with your actual API call for user registration
+      
       const token = await createAccount(formData);
       console.log('User signed up with token:', token);
-      // Redirect or perform any other action after successful signup
+      
     } catch (error) {
       console.error('Error during signup:', error);
       setError('Error during signup. Please try again.');
