@@ -36,12 +36,12 @@ const ShopContextProvider = (props) => {
 
   const logout = () => {
     setLoggedIn(false);
+    setCartItems(getDefaultCart()); // Clear the cart when logging out
     console.log('User logged out');
   };
 
   const addToCart = (productId) => {
     setCartItems((prev) => ({ ...prev, [productId]: (prev[productId] || 0) + 1 }));
-    console.log(cartItems);
   };
 
   const removeFromCart = (productId) => {
@@ -60,7 +60,7 @@ const ShopContextProvider = (props) => {
       }
     }
 
-    return totalAmount.toFixed(2); // Ensure totalAmount is formatted as a string with 2 decimal places
+    return totalAmount.toFixed(2);
   };
 
   const getTotalCartItems = () => {
@@ -93,6 +93,7 @@ const ShopContextProvider = (props) => {
 };
 
 export default ShopContextProvider;
+
 
 
 
