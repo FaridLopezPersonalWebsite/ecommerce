@@ -1,4 +1,3 @@
-// ShopContext.jsx
 import React, { createContext, useState, useEffect } from "react";
 import { getAllProducts } from "../Components/API";
 
@@ -36,7 +35,7 @@ const ShopContextProvider = (props) => {
 
   const logout = () => {
     setLoggedIn(false);
-    setCartItems(getDefaultCart()); // Clear the cart when logging out
+    setCartItems(getDefaultCart()); 
     console.log('User logged out');
   };
 
