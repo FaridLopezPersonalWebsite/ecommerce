@@ -1,3 +1,4 @@
+// ShopContext.jsx
 import React, { createContext, useState, useEffect } from "react";
 import { getAllProducts } from "../Components/API";
 
@@ -48,17 +49,19 @@ const ShopContextProvider = (props) => {
   };
 
   const getTotalCartAmount = () => {
-  let totalAmount = 0;
-  for (const productId in cartItems) {
-    if (cartItems[productId] > 0) {
-      const itemInfo = all_product.find((product) => product.id === Number(productId));
-      if (itemInfo) {
-        totalAmount += cartItems[productId] * itemInfo.new_price;
+    let totalAmount = 0;
+
+    for (const productId in cartItems) {
+      if (cartItems[productId] > 0) {
+        const itemInfo = all_product.find((product) => product.id === Number(productId));
+        if (itemInfo) {
+          totalAmount += cartItems[productId] * itemInfo.price;
+        }
       }
     }
-  }
-  return totalAmount.toFixed(2); 
-};
+
+    return totalAmount.toFixed(2); // Ensure totalAmount is formatted as a string with 2 decimal places
+  };
 
   const getTotalCartItems = () => {
     let totalItem = 0;
@@ -90,6 +93,8 @@ const ShopContextProvider = (props) => {
 };
 
 export default ShopContextProvider;
+
+
 
 
 
