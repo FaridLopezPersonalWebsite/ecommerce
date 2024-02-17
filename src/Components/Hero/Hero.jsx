@@ -9,8 +9,7 @@ const Hero = () => {
       <div className="hero-left">
         <div>
             <div className="hero-hand-icon">
-                <p>Welcome!</p>
-                
+                <p>Welcome! Bienvenidos!</p>
             </div>
             <p>Collections</p>
             <p>For Everyone.</p>

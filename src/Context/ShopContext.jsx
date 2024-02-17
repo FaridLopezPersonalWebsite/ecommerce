@@ -1,63 +1,65 @@
-// ShopContext.js
-import React, { createContext, useState } from "react";
-import all_product from "../Components/Assets/all_product";
+import React, { createContext, useState, useEffect } from "react";
+import { getAllProducts } from "../Components/API";
 
-// Function to create a default cart with all product IDs initialized to 0
 const getDefaultCart = () => {
   let cart = {};
-  for (let index = 0; index < all_product.length + 1; index++) {
+  for (let index = 0; index < 100; index++) {
     cart[index] = 0;
   }
   return cart;
 };
 
-// Create a context to hold the state and functions related to shopping
 export const ShopContext = createContext(null);
 
-// Component to provide the context to the component tree
 const ShopContextProvider = (props) => {
-  // State to manage the user login status
   const [loggedIn, setLoggedIn] = useState(false);
-
-  // State to manage the cart items
   const [cartItems, setCartItems] = useState(getDefaultCart());
+  const [all_product, setAllProduct] = useState([]);
 
-  // Function to log in the user
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await getAllProducts();
+        setAllProduct(data);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
   const login = () => {
     setLoggedIn(true);
-    // Additional logic for user login if needed
   };
 
-  // Function to log out the user
   const logout = () => {
     setLoggedIn(false);
     console.log('User logged out');
   };
 
-  // Function to add an item to the cart
-  const addToCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+  const addToCart = (productId) => {
+    setCartItems((prev) => ({ ...prev, [productId]: (prev[productId] || 0) + 1 }));
     console.log(cartItems);
   };
 
-  // Function to remove an item from the cart
-  const removeFromCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+  const removeFromCart = (productId) => {
+    setCartItems((prev) => ({ ...prev, [productId]: Math.max((prev[productId] || 0) - 1, 0) }));
   };
 
-  // Function to calculate the total amount of items in the cart
   const getTotalCartAmount = () => {
-    let totalAmount = 0;
-    for (const item in cartItems) {
-      if (cartItems[item] > 0) {
-        let itemInfo = all_product.find((product) => product.id === Number(item));
-        totalAmount += cartItems[item] * itemInfo.new_price;
+  let totalAmount = 0;
+  for (const productId in cartItems) {
+    if (cartItems[productId] > 0) {
+      const itemInfo = all_product.find((product) => product.id === Number(productId));
+      if (itemInfo) {
+        totalAmount += cartItems[productId] * itemInfo.new_price;
       }
     }
-    return totalAmount;
-  };
+  }
+  return totalAmount.toFixed(2); 
+};
 
-  // Function to calculate the total number of items in the cart
   const getTotalCartItems = () => {
     let totalItem = 0;
     for (const item in cartItems) {
@@ -68,7 +70,6 @@ const ShopContextProvider = (props) => {
     return totalItem;
   };
 
-  // Context value containing state and functions
   const contextValue = {
     getTotalCartItems,
     getTotalCartAmount,
@@ -78,10 +79,9 @@ const ShopContextProvider = (props) => {
     removeFromCart,
     login,
     logout,
-    loggedIn, 
+    loggedIn,
   };
 
-  
   return (
     <ShopContext.Provider value={contextValue}>
       {props.children}
@@ -90,4 +90,9 @@ const ShopContextProvider = (props) => {
 };
 
 export default ShopContextProvider;
+
+
+
+
+
 

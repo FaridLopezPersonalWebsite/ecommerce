@@ -1,3 +1,6 @@
+# LOGIN INFO FOR API PURPOSES
+username: "mor_2314",
+password: "83r5^_"
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,6 +1,7 @@
 .productdisplay{
     display: flex;
     margin: 0px 170px;
+    font-family: monospace;
 }
 .productdisplay-left{
     display: flex;
