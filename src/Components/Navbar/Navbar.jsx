@@ -1,5 +1,4 @@
-
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import './Navbar.css';
 import cart_icon from '../Assets/cart_icon.png';
 import nav_dropdown from '../Assets/nav_dropdown.png';
@@ -35,16 +34,14 @@ const Navbar = () => {
       </ul>
       <div className="nav-login-cart">
         {loggedIn ? (
-         
           <>
-            <button onClick={logout}>Logout</button>
-            <div className="nav-cart-count">{getTotalCartItems()}</div>
             <Link to='/cart'>
               <img src={cart_icon} alt="" />
             </Link>
+            <div className="nav-cart-count">{getTotalCartItems()}</div>
+            <button onClick={logout}>Logout</button>
           </>
         ) : (
-       
           <>
             <Link to='/login'>
               <button>Login</button>
@@ -61,5 +58,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
 
